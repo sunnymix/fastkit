@@ -1,2 +1,3 @@
-# restkit
-Rest Kit
+# RestKit
+
+A simple toolkit for RESTful API.
