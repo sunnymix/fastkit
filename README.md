@@ -1,3 +1,3 @@
 # RestKit
 
-A simple toolkit for RESTful API.
+The restkit Java library helps simplifing the development of RESTful API clients.
