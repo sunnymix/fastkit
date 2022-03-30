@@ -9,7 +9,6 @@ import static net.restkit.core.common.Kit.Strings.notBlank;
  * @author sunnymix
  */
 public class Kit {
-
     public static class Enums {
         @SuppressWarnings({"rawtypes"})
         public static <T extends Enum> T getEnumItem(Class<T> type, String propName, String propValue) {
@@ -63,5 +62,4 @@ public class Kit {
             return str != null && str.trim().length() > 0;
         }
     }
-
 }

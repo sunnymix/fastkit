@@ -19,7 +19,6 @@ import java.util.TimeZone;
  * @author sunnymix
  */
 public class Json extends ObjectMapper {
-
     public static final Json JSON = new Json();
 
     public Json() {
@@ -128,5 +127,4 @@ public class Json extends ObjectMapper {
             }
         }
     }
-
 }
