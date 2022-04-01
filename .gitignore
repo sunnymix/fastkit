@@ -10,7 +10,7 @@ gradle-app.setting
 # Cache of project
 .gradletasknamecache
 
-### STS ###
+### Java ###
 .apt_generated
 .classpath
 .factorypath

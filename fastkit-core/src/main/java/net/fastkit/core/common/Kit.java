@@ -1,9 +1,9 @@
-package net.restkit.core.common;
+package net.fastkit.core.common;
 
 import java.lang.reflect.Method;
 
-import static net.restkit.core.common.Kit.Beans.readPropValue;
-import static net.restkit.core.common.Kit.Strings.notBlank;
+import static net.fastkit.core.common.Kit.Beans.readPropValue;
+import static net.fastkit.core.common.Kit.Strings.notBlank;
 
 /**
  * @author sunnymix

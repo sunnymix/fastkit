@@ -1,4 +1,4 @@
-package net.restkit.core.common.data;
+package net.fastkit.core.common.data;
 
 /**
  * @author sunnymix

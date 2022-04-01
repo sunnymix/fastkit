@@ -1,3 +1,3 @@
-# RestKit
+# FastKit
 
-The restkit Java library helps simplifing the development of RESTful API clients.
+The fastkit Java library helps developing easily and quickly.

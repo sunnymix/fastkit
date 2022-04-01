@@ -1,10 +1,10 @@
-package net.restkit.core.common;
+package net.fastkit.core.common;
 
 import com.fasterxml.jackson.core.type.TypeReference;
-import net.restkit.core.common.data.Gender;
-import net.restkit.core.common.data.Grade;
-import net.restkit.core.common.data.User;
-import net.restkit.core.common.data.UserList;
+import net.fastkit.core.common.data.Gender;
+import net.fastkit.core.common.data.Grade;
+import net.fastkit.core.common.data.User;
+import net.fastkit.core.common.data.UserList;
 import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
