@@ -90,4 +90,24 @@ public class Kit {
 
     }
 
+    public static class Resources {
+
+        public static String load(String path) {
+            if (Strings.isBlank(path)) {
+                return null;
+            }
+            ClassLoader classloader = Thread.currentThread().getContextClassLoader();
+            InputStream io = classloader.getResourceAsStream(path);
+            String json = null;
+            try {
+                if (io != null) {
+                    json = Kit.Strings.from(io);
+                }
+            } catch (Throwable ignored) {
+            }
+            return json;
+        }
+
+    }
+
 }

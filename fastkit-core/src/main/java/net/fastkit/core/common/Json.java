@@ -11,7 +11,6 @@ import com.fasterxml.jackson.datatype.jdk8.Jdk8Module;
 import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
 
 import java.io.IOException;
-import java.io.InputStream;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 import java.util.TimeZone;
@@ -63,21 +62,13 @@ public class Json extends ObjectMapper {
         if (Kit.Strings.notBlank(resource) || type == null) {
             return null;
         }
-        ClassLoader classloader = Thread.currentThread().getContextClassLoader();
-        InputStream io = classloader.getResourceAsStream(resource);
-        String json = "";
-        try {
-            if (io != null) {
-                json = Kit.Strings.from(io);
-            }
-        } catch (Throwable ignored) {
-        }
-
+        String json = Kit.Resources.load(resource);
         return fromJson(json, new TypeReference<T>() {
         });
     }
 
     public static class EnumModule extends SimpleModule {
+
         private static final String[] propNames = {"value", "code"};
 
         public EnumModule() {
@@ -87,6 +78,7 @@ public class Json extends ObjectMapper {
 
         @SuppressWarnings({"rawtypes"})
         public static class Serializer extends JsonSerializer<Enum> {
+
             public Serializer() {
             }
 
@@ -110,10 +102,12 @@ public class Json extends ObjectMapper {
                     throw new RuntimeException(err.getCause());
                 }
             }
+
         }
 
         @SuppressWarnings({"rawtypes"})
         public static class Deserializer extends JsonDeserializer<Enum> implements ContextualDeserializer {
+
             private Class<Enum> enumClass;
 
             public Deserializer() {
@@ -144,6 +138,7 @@ public class Json extends ObjectMapper {
             public void setEnumClass(Class<Enum> enumClass) {
                 this.enumClass = enumClass;
             }
+
         }
     }
 }
