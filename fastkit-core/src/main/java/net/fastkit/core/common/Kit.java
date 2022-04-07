@@ -1,6 +1,8 @@
 package net.fastkit.core.common;
 
-import java.io.*;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
 import java.lang.reflect.Method;
 import java.nio.charset.StandardCharsets;
 
@@ -75,40 +77,15 @@ public class Kit {
         }
 
         public static String from(InputStream input) throws IOException {
-            StringWriter writer = new StringWriter();
+            StringBuilder builder = new StringBuilder();
             InputStreamReader in = new InputStreamReader(input, StandardCharsets.UTF_8);
             char[] buffer = new char[4096];
             long count;
             int n;
             for (count = 0L; -1 != (n = in.read(buffer)); count += (long) n) {
-                writer.write(buffer, 0, n);
+                builder.append(buffer, 0, n);
             }
-            return writer.toString();
-        }
-
-        public static class StringWriter extends Writer implements Serializable {
-
-            private final StringBuilder builder;
-
-            public StringWriter() {
-                this.builder = new StringBuilder();
-            }
-
-            @Override
-            public void write(char[] buffer, int off, int len) throws IOException {
-                if (buffer != null) {
-                    this.builder.append(buffer, off, len);
-                }
-            }
-
-            @Override
-            public void flush() throws IOException {
-            }
-
-            @Override
-            public void close() throws IOException {
-            }
-
+            return builder.toString();
         }
 
     }

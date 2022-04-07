@@ -11,6 +11,7 @@ import com.fasterxml.jackson.datatype.jdk8.Jdk8Module;
 import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
 
 import java.io.IOException;
+import java.io.InputStream;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 import java.util.TimeZone;
@@ -56,6 +57,24 @@ public class Json extends ObjectMapper {
         } catch (Throwable ignored) {
         }
         return null;
+    }
+
+    public static <T> T fromJsonResource(final String resource, final TypeReference<T> type) {
+        if (Kit.Strings.notBlank(resource) || type == null) {
+            return null;
+        }
+        ClassLoader classloader = Thread.currentThread().getContextClassLoader();
+        InputStream io = classloader.getResourceAsStream(resource);
+        String json = "";
+        try {
+            if (io != null) {
+                json = Kit.Strings.from(io);
+            }
+        } catch (Throwable ignored) {
+        }
+
+        return fromJson(json, new TypeReference<T>() {
+        });
     }
 
     public static class EnumModule extends SimpleModule {
