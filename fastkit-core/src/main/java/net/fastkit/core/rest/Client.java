@@ -47,4 +47,8 @@ public class Client {
         return Response.error(0, "Internal server error");
     }
 
+    public static void main(String[] args) {
+        System.out.println(new Client("https://sunnymix.com").get("/mock/json"));
+    }
+
 }
